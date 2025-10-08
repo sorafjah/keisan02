@@ -25,13 +25,16 @@
                 padding: 0;
             }
             #print-sheet {
+                display: block; /* 印刷時の改ページ問題を避けるためflexを解除 */
                 box-shadow: none;
                 border: none;
                 margin: 0;
                 padding: 10mm;
                 width: 100%;
-                height: 100%;
-                page-break-inside: avoid;
+                height: auto;
+            }
+            #print-content {
+                 min-height: 230mm; /* 問題エリアの高さを確保して広々レイアウトを維持 */
             }
             /* 印刷ボタンを非表示 */
             #print-button-container {
