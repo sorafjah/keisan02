@@ -29,12 +29,15 @@
                 box-shadow: none;
                 border: none;
                 margin: 0;
-                padding: 10mm;
+                padding: 15mm; /* 余白を調整 */
                 width: 100%;
                 height: auto;
+                page-break-inside: avoid; /* この要素内で改ページされるのを防ぐ */
             }
             #print-content {
-                 min-height: 230mm; /* 問題エリアの高さを確保して広々レイアウトを維持 */
+                /* --- ▼修正点▼ --- */
+                /* 固定の高さを削除し、コンテンツ量に応じた高さになるようにします */
+                min-height: 0;
             }
             /* 印刷ボタンを非表示 */
             #print-button-container {
@@ -139,7 +142,9 @@
                 <span class="text-lg">なまえ＿＿＿＿＿＿＿＿＿＿＿＿</span>
                 <span id="print-header-text" class="text-lg"></span>
             </header>
-            <main id="print-content" class="grow grid grid-cols-2 gap-x-16 gap-y-12 text-xl content-around">
+            <!-- --- ▼修正点▼ --- -->
+            <!-- content-around から content-start に変更し、問題を上から詰めて表示 -->
+            <main id="print-content" class="grow grid grid-cols-2 gap-x-16 gap-y-12 text-xl content-start">
                 <!-- 問題がここに挿入されます -->
             </main>
         </div>
@@ -463,7 +468,7 @@
                     problemEl.className = 'flex items-baseline problem-item';
                     problemEl.dataset.question = p.q;
                     problemEl.dataset.answer = p.a;
-                    problemEl.innerHTML = `<span class="flex-1">${p.q}</span>`;
+                    problemEl.innerHTML = `<span class="flex-1">${p.q} = </span>`;
                     printContent.appendChild(problemEl);
                 });
 
@@ -483,7 +488,7 @@
                     if (answersVisible) {
                         item.innerHTML = `<span class="flex-1">${question} = <span class="font-bold text-blue-600">${answer}</span></span>`;
                     } else {
-                        item.innerHTML = `<span class="flex-1">${question}</span>`;
+                        item.innerHTML = `<span class="flex-1">${question} = </span>`;
                     }
                 });
                 
@@ -510,4 +515,3 @@
     </script>
 </body>
 </html>
-
