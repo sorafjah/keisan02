@@ -14,6 +14,13 @@
         }
         /* 印刷時のスタイル */
         @media print {
+            /* --- ▼修正点▼ --- */
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                overflow: hidden; /* 不要なオーバーフローを防ぐ */
+            }
             /* 画面上のUI要素はすべて非表示に */
             body > *:not(#print-area) {
                 display: none;
@@ -23,20 +30,20 @@
                 display: block !important;
                 margin: 0;
                 padding: 0;
+                height: 100%;
             }
             #print-sheet {
-                display: block; /* 印刷時の改ページ問題を避けるためflexを解除 */
+                display: flex; /* flexレイアウトを有効化 */
+                flex-direction: column; /* 子要素を縦に並べる */
                 box-shadow: none;
                 border: none;
                 margin: 0;
                 padding: 15mm; /* 余白を調整 */
                 width: 100%;
-                height: auto;
-                page-break-inside: avoid; /* この要素内で改ページされるのを防ぐ */
+                height: 100%; /* 印刷ページの高さ全体を使う */
+                box-sizing: border-box; /* paddingを高さに含める */
             }
             #print-content {
-                /* --- ▼修正点▼ --- */
-                /* 固定の高さを削除し、コンテンツ量に応じた高さになるようにします */
                 min-height: 0;
             }
             /* 印刷ボタンを非表示 */
@@ -143,8 +150,8 @@
                 <span id="print-header-text" class="text-lg"></span>
             </header>
             <!-- --- ▼修正点▼ --- -->
-            <!-- content-around から content-start に変更し、問題を上から詰めて表示 -->
-            <main id="print-content" class="grow grid grid-cols-2 gap-x-16 gap-y-12 text-xl content-start">
+            <!-- `grow`で高さを広げ、`content-around`で問題を均等配置 -->
+            <main id="print-content" class="grow grid grid-cols-2 gap-x-16 gap-y-12 text-xl content-around">
                 <!-- 問題がここに挿入されます -->
             </main>
         </div>
@@ -316,7 +323,7 @@
                 e.preventDefault();
                 printArea.classList.add('hidden');
 
-                const totalProblems = checkTotalProblems();
+                const totalProblems = checkTotalproblems();
                 if (totalProblems > 16) return;
 
                 const settings = [];
@@ -515,3 +522,4 @@
     </script>
 </body>
 </html>
+
