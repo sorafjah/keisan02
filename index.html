@@ -108,10 +108,6 @@
                         <label for="header-text" class="block text-sm font-medium text-gray-700 mb-1">問題文の右上にコメントを記入 (任意)</label>
                         <input type="text" id="header-text" placeholder="(例: 10月13日)" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                     </div>
-                    <div>
-                        <label for="footer-comment" class="block text-sm font-medium text-gray-700 mb-1">問題文の最後にコメントを記入(任意)</label>
-                        <textarea id="footer-comment" rows="2" placeholder="（例：問題を作って書こう）" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
-                    </div>
                 </div>
             </fieldset>
 
@@ -140,12 +136,9 @@
                 <span class="text-lg">なまえ＿＿＿＿＿＿＿＿＿＿＿＿</span>
                 <span id="print-header-text" class="text-lg"></span>
             </header>
-            <main id="print-content" class="grid grid-cols-2 gap-x-16 gap-y-12 text-xl">
+            <main id="print-content" class="grow grid grid-cols-2 gap-x-16 gap-y-12 text-xl content-around">
                 <!-- 問題がここに挿入されます -->
             </main>
-            <footer id="print-footer-comment" class="pt-8 text-base text-left text-gray-600">
-                <!-- コメントがここに挿入されます -->
-            </footer>
         </div>
     </div>
 
@@ -160,7 +153,6 @@
             const printArea = document.getElementById('print-area');
             const printContent = document.getElementById('print-content');
             const printHeaderText = document.getElementById('print-header-text');
-            const printFooterComment = document.getElementById('print-footer-comment');
             const printButton = document.getElementById('print-button');
             const resetBtn = document.getElementById('reset-btn');
             const toggleAnswersBtn = document.getElementById('toggle-answers-button');
@@ -459,10 +451,8 @@
             // --- 表示処理 ---
             const displayPrint = (problems) => {
                 const headerText = document.getElementById('header-text').value;
-                const footerComment = document.getElementById('footer-comment').value;
 
                 printHeaderText.textContent = headerText;
-                printFooterComment.textContent = footerComment;
                 printContent.innerHTML = '';
 
                 problems.forEach((p) => {
