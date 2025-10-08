@@ -31,7 +31,7 @@
                 padding: 10mm;
                 width: 100%;
                 height: 100%;
-                page-break-after: always;
+                page-break-inside: avoid;
             }
             /* 印刷ボタンを非表示 */
             #print-button-container {
@@ -48,7 +48,8 @@
             padding: 20mm 15mm 20mm 25mm;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             box-sizing: border-box;
-            /* display: flex と flex-direction: column を削除 */
+            display: flex;
+            flex-direction: column;
         }
     </style>
 </head>
@@ -135,7 +136,7 @@
                 <span class="text-lg">なまえ＿＿＿＿＿＿＿＿＿＿＿＿</span>
                 <span id="print-header-text" class="text-lg"></span>
             </header>
-            <main id="print-content" class="min-h-[200mm] grid grid-cols-2 gap-x-16 gap-y-12 text-xl content-around">
+            <main id="print-content" class="grow grid grid-cols-2 gap-x-16 gap-y-12 text-xl content-around">
                 <!-- 問題がここに挿入されます -->
             </main>
         </div>
