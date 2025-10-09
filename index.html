@@ -40,11 +40,10 @@
         box-shadow: none;
         margin: 0;
         border: none;
-        page-break-after: always;
       }
       
-      .page:last-child {
-        page-break-after: auto;
+      #problem-sheet {
+        page-break-after: always;
       }
     }
 
@@ -73,7 +72,7 @@
       <h1 class="text-3xl md:text-4xl font-bold text-gray-700">計算プリント作成アプリ 2</h1>
     </header>
 
-    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md no-print">
       <!-- 1. 問題設定 -->
       <section class="mb-6">
         <h2 class="text-xl font-bold border-b-2 border-blue-500 pb-2 mb-4">1. 問題設定</h2>
@@ -83,11 +82,11 @@
         <div id="problem-types" class="space-y-4">
             <!-- たしざん -->
             <div class="bg-gray-50 p-4 rounded-md border border-gray-200" id="add-block">
-                <div class="font-semibold mb-4 flex items-center">
-                    たしざん
+                <div class="flex items-baseline mb-3">
+                    <span class="font-semibold">たしざん</span>
+                    <p class="text-sm text-gray-600 ml-4">例：「7～9」+「8～16」の範囲で3問</p>
                 </div>
-                <div class="pl-6">
-                    <p class="text-sm text-gray-600 mb-2">例：「7～9」+「8～16」の範囲で3問</p>
+                <div class="pl-6 space-y-3">
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 items-center">
                         <div class="flex items-center space-x-2">
                             <input type="number" id="add-min1" value="1" min="0" class="w-full p-2 border rounded">
@@ -101,26 +100,26 @@
                             <input type="number" id="add-max2" value="9" min="0" class="w-full p-2 border rounded">
                         </div>
                         <div class="flex items-center space-x-2">
-                            <label for="add-count">問題数:</label>
+                            <label for="add-count" class="whitespace-nowrap">問題数:</label>
                             <input type="number" id="add-count" value="0" min="0" max="16" class="w-full p-2 border rounded problem-count">
                         </div>
                     </div>
-                     <div class="mt-3">
-                         <p class="text-sm font-medium">問題の順番:</p>
+                     <div class="flex items-center gap-4">
+                         <p class="text-sm font-medium whitespace-nowrap">問題の順番:</p>
                          <div class="flex space-x-4">
-                             <label><input type="radio" name="add-order" value="sorted" checked> 小さい順</label>
-                             <label><input type="radio" name="add-order" value="random"> ランダム</label>
+                             <label class="flex items-center gap-1"><input type="radio" name="add-order" value="sorted" checked> <span>小さい順</span></label>
+                             <label class="flex items-center gap-1"><input type="radio" name="add-order" value="random"> <span>ランダム</span></label>
                          </div>
                      </div>
                 </div>
             </div>
             <!-- ひき算 -->
             <div class="bg-gray-50 p-4 rounded-md border border-gray-200" id="sub-block">
-                <div class="font-semibold mb-4 flex items-center">
-                    ひき算
+                <div class="flex items-baseline mb-3">
+                    <span class="font-semibold">ひき算</span>
+                    <p class="text-sm text-gray-600 ml-4">例：「12～21」-「5～7」の範囲で4問</p>
                 </div>
-                <div class="pl-6">
-                    <p class="text-sm text-gray-600 mb-2">例：「12～21」-「5～7」の範囲で4問</p>
+                <div class="pl-6 space-y-3">
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 items-center">
                          <div class="flex items-center space-x-2">
                             <input type="number" id="sub-min1" value="10" min="0" class="w-full p-2 border rounded">
@@ -134,26 +133,26 @@
                             <input type="number" id="sub-max2" value="9" min="0" class="w-full p-2 border rounded">
                         </div>
                         <div class="flex items-center space-x-2">
-                            <label for="sub-count">問題数:</label>
+                            <label for="sub-count" class="whitespace-nowrap">問題数:</label>
                             <input type="number" id="sub-count" value="0" min="0" max="16" class="w-full p-2 border rounded problem-count">
                         </div>
                     </div>
-                     <div class="mt-3">
-                         <p class="text-sm font-medium">問題の順番:</p>
+                     <div class="flex items-center gap-4">
+                         <p class="text-sm font-medium whitespace-nowrap">問題の順番:</p>
                          <div class="flex space-x-4">
-                             <label><input type="radio" name="sub-order" value="sorted" checked> 小さい順</label>
-                             <label><input type="radio" name="sub-order" value="random"> ランダム</label>
+                             <label class="flex items-center gap-1"><input type="radio" name="sub-order" value="sorted" checked> <span>小さい順</span></label>
+                             <label class="flex items-center gap-1"><input type="radio" name="sub-order" value="random"> <span>ランダム</span></label>
                          </div>
                      </div>
                 </div>
             </div>
             <!-- かけ算 -->
             <div class="bg-gray-50 p-4 rounded-md border border-gray-200" id="mul-block">
-                <div class="font-semibold mb-4 flex items-center">
-                    かけ算
+                <div class="flex items-baseline mb-3">
+                    <span class="font-semibold">かけ算</span>
+                    <p class="text-sm text-gray-600 ml-4">例：段の範囲「5～7」× かける数の範囲「7～9」で3問</p>
                 </div>
-                <div class="pl-6">
-                    <p class="text-sm text-gray-600 mb-2">例：段の範囲「5～7」× かける数の範囲「7～9」で3問</p>
+                <div class="pl-6 space-y-3">
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 items-center">
                          <div class="flex items-center space-x-2">
                             <input type="number" id="mul-min1" value="2" min="0" class="w-full p-2 border rounded">
@@ -167,15 +166,15 @@
                             <input type="number" id="mul-max2" value="9" min="0" class="w-full p-2 border rounded">
                         </div>
                         <div class="flex items-center space-x-2">
-                            <label for="mul-count">問題数:</label>
+                            <label for="mul-count" class="whitespace-nowrap">問題数:</label>
                             <input type="number" id="mul-count" value="0" min="0" max="16" class="w-full p-2 border rounded problem-count">
                         </div>
                     </div>
-                    <div class="mt-3">
-                         <p class="text-sm font-medium">問題の順番:</p>
+                    <div class="flex items-center gap-4">
+                         <p class="text-sm font-medium whitespace-nowrap">問題の順番:</p>
                          <div class="flex space-x-4">
-                             <label><input type="radio" name="mul-order" value="sorted" checked> 小さい順</label>
-                             <label><input type="radio" name="mul-order" value="random"> ランダム</label>
+                             <label class="flex items-center gap-1"><input type="radio" name="mul-order" value="sorted" checked> <span>小さい順</span></label>
+                             <label class="flex items-center gap-1"><input type="radio" name="mul-order" value="random"> <span>ランダム</span></label>
                          </div>
                      </div>
                 </div>
@@ -336,7 +335,8 @@
              problems = selected.map(p => createProblemObject(config, p.num1, p.num2));
 
         } else {
-            while (problems.length < config.count) {
+            let attempt = 0;
+            while (problems.length < config.count && attempt < 1000) {
               const num1 = getRandomInt(config.min1, config.max1);
               const num2 = getRandomInt(config.min2, config.max2);
               const key = `${num1},${num2}`;
@@ -344,11 +344,13 @@
               if (!combinations.has(key)) {
                 // 引き算で答えが負にならないようにする
                 if(config.type === 'sub' && num1 < num2) {
+                    attempt++;
                     continue;
                 }
                 combinations.add(key);
                 problems.push(createProblemObject(config, num1, num2));
               }
+              attempt++;
             }
         }
         
@@ -416,4 +418,5 @@
 </body>
 
 </html>
+
 
