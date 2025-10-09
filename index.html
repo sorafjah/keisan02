@@ -27,16 +27,12 @@
         margin: 0;
         border: none;
         width: 100%;
-        min-height: auto; /* 印刷時はコンテンツの高さに合わせる */
+        min-height: 0; /* 印刷時の高さをリセット */
       }
       
-      /* 問題用紙と解答用紙の間に改ページを入れる */
-      #problem-sheet {
-        page-break-after: always;
-      }
-
+      /* 問題用紙と解答用紙を分けるため、解答用紙の「前」で改ページ */
       #answer-sheet {
-        page-break-before: avoid; /* 重複した改ページ指定を避ける */
+        page-break-before: always;
       }
     }
 
@@ -411,6 +407,7 @@
 </body>
 
 </html>
+
 
 
 
