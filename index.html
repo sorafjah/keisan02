@@ -20,19 +20,16 @@
       .no-print {
         display: none;
       }
-
-      /* 印刷時はページのスタイルをリセットし、ブラウザの印刷処理に任せる */
       .page {
         box-shadow: none;
         margin: 0;
         border: none;
         width: 100%;
-        min-height: 0; /* 画面用の高さをリセット */
-        height: auto;  /* コンテンツに応じた高さに */
-        page-break-inside: avoid; /* ページ内で改ページされないようにする */
+        /* 印刷時は高さの指定を完全に解除し、コンテンツに合わせる */
+        min-height: unset;
+        height: unset;
+        page-break-inside: avoid;
       }
-      
-      /* 解答用紙の前で必ず改ページする */
       #answer-sheet {
         page-break-before: always;
       }
@@ -40,19 +37,20 @@
 
     .page {
       width: 210mm;
-      min-height: 297mm;
-      padding: 20mm 15mm 20mm 25mm; /* 左余白を広めに */
+      /* min-heightを削除し、コンテンツに応じた高さにする */
+      padding: 20mm 15mm 20mm 25mm;
       margin: 1rem auto;
       background: white;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      box-sizing: border-box; /* ★★★ 根本原因を解決する重要な修正 ★★★ */
+      box-sizing: border-box;
     }
     .problem-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 45px 20px; /* 行間を広めに調整 */
+      /* 行間をさらに広げ、16問でA4が埋まるように調整 */
+      gap: 60px 20px;
       font-size: 1.5rem;
-      line-height: 2.5; /* 行の高さを広めに調整 */
+      line-height: 2.5;
     }
   </style>
 </head>
@@ -64,9 +62,6 @@
     <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md no-print">
       <!-- 1. 問題設定 -->
       <section class="mb-6">
-        <h2 class="text-xl font-bold pb-2 mb-4">1. 問題設定</h2>
-        <p class="mb-4">作成したい問題の種類、範囲、問題数を指定してください。</p>
-        
         <!-- 各問題の設定 -->
         <div id="problem-types" class="space-y-4">
             <!-- たしざん -->
@@ -183,7 +178,6 @@
 
       <!-- 3. プリントのレイアウトと出力設定 -->
       <section class="mb-6">
-        <h2 class="text-xl font-bold pb-2 mb-4">2. プリントヘッダー設定</h2>
         <div class="flex items-center">
             <label for="header-text" class="font-semibold mr-4 whitespace-nowrap">右上テキスト:</label>
             <input type="text" id="header-text" class="w-full p-2 border rounded" placeholder="例：10月13日 かけ算7の段">
