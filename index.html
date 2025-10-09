@@ -25,9 +25,9 @@
         margin: 0;
         border: none;
         width: 100%;
-        /* 印刷時は高さの指定を完全に解除し、コンテンツに合わせる */
-        min-height: unset;
-        height: unset;
+        /* ★★★ご指摘の通り、以前の成功した設定に戻します★★★ */
+        height: auto;
+        min-height: 0;
         page-break-inside: avoid;
       }
       #answer-sheet {
@@ -37,7 +37,8 @@
 
     .page {
       width: 210mm;
-      /* min-heightを削除し、コンテンツに応じた高さにする */
+      /* 画面プレビュー用にA4の高さを設定 */
+      min-height: 297mm;
       padding: 20mm 15mm 20mm 25mm;
       margin: 1rem auto;
       background: white;
