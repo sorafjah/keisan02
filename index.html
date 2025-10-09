@@ -16,21 +16,23 @@
 
     /* 印刷用のスタイル */
     @media print {
-      /* 設定フォームやボタンなど、印刷不要な要素を非表示に */
+      /* 印刷時に不要な要素は非表示 */
       .no-print {
         display: none;
       }
 
-      /* 印刷時はページの影やマージンをリセット */
+      /* 印刷時はページのスタイルをリセットし、ブラウザの印刷処理に任せる */
       .page {
         box-shadow: none;
         margin: 0;
         border: none;
         width: 100%;
-        min-height: 0; /* 印刷時の高さをリセット */
+        min-height: 0; /* 画面用の高さをリセット */
+        height: auto;  /* コンテンツに応じた高さに */
+        page-break-inside: avoid; /* ページ内で改ページされないようにする */
       }
       
-      /* 問題用紙と解答用紙を分けるため、解答用紙の「前」で改ページ */
+      /* 解答用紙の前で必ず改ページする */
       #answer-sheet {
         page-break-before: always;
       }
@@ -407,6 +409,7 @@
 </body>
 
 </html>
+
 
 
 
