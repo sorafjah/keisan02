@@ -29,6 +29,9 @@
             #controls, #settings-container {
                 display: none;
             }
+            #print-sheet {
+                box-shadow: none !important;
+            }
         }
         
         #print-sheet {
@@ -36,7 +39,6 @@
             height: 297mm;
             box-sizing: border-box;
             margin: 0 auto;
-            /* page-break-after: always; を削除 */
         }
 
         .problem-item {
@@ -52,16 +54,16 @@
 <body class="bg-gray-100 text-gray-800 p-4 md:p-8">
 
     <div id="settings-container" class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-        <h1 class="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-700">計算プリント作成アプリ 2</h1>
+        <h1 class="text-2xl md:text-3xl font-bold mb-4 text-center text-gray-700">計算プリント作成アプリ 2</h1>
         
         <form id="settings-form">
-            <h2 class="text-xl font-bold mb-4 border-b-2 border-blue-500 pb-2">1. 問題設定</h2>
-            <p class="text-gray-600 mb-6">作成したい問題の種類、範囲、問題数を指定してください。複数の種類を組み合わせることも可能です。</p>
+            <h2 class="text-xl font-bold mb-3 border-b-2 border-blue-500 pb-2">1. 問題設定</h2>
+            <p class="text-gray-600 mb-4">作成したい問題の種類、範囲、問題数を指定してください。</p>
 
             <!-- 足し算 -->
-            <div class="bg-blue-50 p-4 rounded-xl mb-6 border border-blue-200">
-                <h3 class="text-lg font-bold text-blue-800 mb-4">足し算</h3>
-                <div class="flex flex-col md:flex-row md:items-center md:gap-4 space-y-4 md:space-y-0">
+            <div class="bg-blue-50 p-3 rounded-xl mb-4 border border-blue-200">
+                <h3 class="text-lg font-bold text-blue-800 mb-3">足し算</h3>
+                <div class="flex flex-col md:flex-row md:items-center md:gap-4 space-y-3 md:space-y-0">
                     <div class="flex flex-wrap items-center gap-2 flex-grow">
                         <input type="number" id="add-min1" min="0" class="w-16 p-2 border rounded-lg" value="7">
                         <span>〜</span>
@@ -84,9 +86,9 @@
             </div>
 
             <!-- 引き算 -->
-            <div class="bg-green-50 p-4 rounded-xl mb-6 border border-green-200">
-                <h3 class="text-lg font-bold text-green-800 mb-4">引き算</h3>
-                <div class="flex flex-col md:flex-row md:items-center md:gap-4 space-y-4 md:space-y-0">
+            <div class="bg-green-50 p-3 rounded-xl mb-4 border border-green-200">
+                <h3 class="text-lg font-bold text-green-800 mb-3">引き算</h3>
+                <div class="flex flex-col md:flex-row md:items-center md:gap-4 space-y-3 md:space-y-0">
                     <div class="flex flex-wrap items-center gap-2 flex-grow">
                         <input type="number" id="sub-min1" min="0" class="w-16 p-2 border rounded-lg" value="12">
                         <span>〜</span>
@@ -109,15 +111,14 @@
             </div>
 
             <!-- かけ算 -->
-            <div class="bg-yellow-50 p-4 rounded-xl mb-6 border border-yellow-200">
-                 <h3 class="text-lg font-bold text-yellow-800 mb-4">かけ算</h3>
-                 <div class="flex flex-col md:flex-row md:items-center md:gap-4 space-y-4 md:space-y-0">
+            <div class="bg-yellow-50 p-3 rounded-xl mb-4 border border-yellow-200">
+                 <h3 class="text-lg font-bold text-yellow-800 mb-3">かけ算</h3>
+                 <div class="flex flex-col md:flex-row md:items-center md:gap-4 space-y-3 md:space-y-0">
                     <div class="flex flex-wrap items-center gap-2 flex-grow">
                         <input type="number" id="mul-min1" min="0" class="w-16 p-2 border rounded-lg" value="5">
                         <span>〜</span>
                         <input type="number" id="mul-max1" min="0" class="w-16 p-2 border rounded-lg" value="7">
                         <span class="text-2xl font-bold mx-2">×</span>
-                        <span>かける数:</span>
                         <input type="number" id="mul-min2" min="0" class="w-16 p-2 border rounded-lg" value="7">
                         <span>〜</span>
                         <input type="number" id="mul-max2" min="0" class="w-16 p-2 border rounded-lg" value="9">
@@ -134,21 +135,20 @@
                 </div>
             </div>
 
-            <div class="p-6 rounded-xl mb-6 border border-gray-200">
-                <h3 class="text-lg font-bold mb-4">問題の表示順</h3>
+            <div class="p-4 rounded-xl mb-4 border border-gray-200">
+                <h3 class="text-lg font-bold mb-3">問題の表示順</h3>
                 <div class="flex flex-col md:flex-row gap-4">
                     <label class="flex-1"><input type="radio" name="overall-order" value="as-created" checked> 作ったままの順</label>
-                    <label class="flex-1"><input type="radio" name="overall-order" value="grouped"> ジャンルごとに固める</label>
                     <label class="flex-1"><input type="radio" name="overall-order" value="random"> 全ジャンルでランダム</label>
                 </div>
             </div>
 
-            <div class="p-6 rounded-xl mb-6 border border-gray-200">
-                <h3 class="text-lg font-bold mb-4">ヘッダー右上のテキスト</h3>
+            <div class="p-4 rounded-xl mb-4 border border-gray-200">
+                <h3 class="text-lg font-bold mb-3">ヘッダー右上のテキスト</h3>
                 <input type="text" id="header-text" class="w-full p-2 border rounded-lg" placeholder="例：たしざんとかけ算7の段">
             </div>
 
-            <div id="error-message" class="text-red-600 font-bold text-center my-4 hidden"></div>
+            <div id="error-message" class="text-red-600 font-bold text-center my-3 hidden"></div>
 
             <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-xl">
                 プリント作成
@@ -297,15 +297,7 @@
             }
 
             const overallOrder = getRadio('overall-order');
-            let finalProblems = [];
-
-            if (overallOrder === 'grouped') {
-                 allProblemGroups.forEach(group => finalProblems.push(...group.problems));
-            } else {
-                // 'as-created' はこの順番
-                let combined = allProblemGroups.reduce((acc, group) => acc.concat(group.problems), []);
-                finalProblems = combined;
-            }
+            let finalProblems = allProblemGroups.reduce((acc, group) => acc.concat(group.problems), []);
             
             if (overallOrder === 'random') {
                 finalProblems = shuffle(finalProblems);
@@ -365,7 +357,7 @@
 
             showingAnswers = false;
             answerToggleBtn.textContent = 'こたえ表示';
-            answerToggleBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
+            answerToggleBtn.classList.remove('bg-orange-500', 'hover:bg-orange-600');
             answerToggleBtn.classList.add('bg-green-600', 'hover:bg-green-700');
             renderProblems();
         });
@@ -380,10 +372,10 @@
             if (showingAnswers) {
                 answerToggleBtn.textContent = 'もんだい表示';
                 answerToggleBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
-                answerToggleBtn.classList.add('bg-red-600', 'hover:bg-red-700');
+                answerToggleBtn.classList.add('bg-orange-500', 'hover:bg-orange-600');
             } else {
                 answerToggleBtn.textContent = 'こたえ表示';
-                answerToggleBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
+                answerToggleBtn.classList.remove('bg-orange-500', 'hover:bg-orange-600');
                 answerToggleBtn.classList.add('bg-green-600', 'hover:bg-green-700');
             }
             renderProblems();
