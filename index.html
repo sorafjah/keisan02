@@ -47,7 +47,6 @@
             letter-spacing: 0.1em;
             padding: 1rem 0; /* 上下のパディングを調整 */
             text-align: left; /* 左揃えに変更 */
-            font-variant-numeric: tabular-nums; /* 数字の幅を揃える */
         }
     </style>
 </head>
@@ -60,97 +59,75 @@
             <h2 class="text-xl font-bold mb-3 border-b-2 border-blue-500 pb-2">1. 問題設定</h2>
             <p class="text-gray-600 mb-4">作成したい問題の種類、範囲、問題数を指定してください。</p>
 
-            <!-- 足し算 -->
-            <div class="bg-blue-50 p-3 rounded-xl mb-4 border border-blue-200">
-                <h3 class="text-lg font-bold text-blue-800 mb-3">足し算</h3>
-                <div class="flex flex-col md:flex-row md:items-center md:gap-4 space-y-3 md:space-y-0">
+            <div class="space-y-4">
+                <!-- 足し算 -->
+                <div class="bg-blue-50 p-3 rounded-xl border border-blue-200 flex flex-col lg:flex-row lg:items-center lg:gap-4 space-y-3 lg:space-y-0">
+                    <h3 class="text-lg font-bold text-blue-800 whitespace-nowrap min-w-[70px]">足し算</h3>
                     <div class="flex flex-wrap items-center gap-2 flex-grow">
-                        <input type="number" id="add-min1" min="0" class="w-16 p-2 border rounded-lg" value="7">
-                        <span>〜</span>
-                        <input type="number" id="add-max1" min="0" class="w-16 p-2 border rounded-lg" value="9">
+                        <input type="number" id="add-min1" min="0" class="w-14 p-2 border rounded-lg" value="7"><span>〜</span><input type="number" id="add-max1" min="0" class="w-14 p-2 border rounded-lg" value="9">
                         <span class="text-2xl font-bold mx-2">+</span>
-                        <input type="number" id="add-min2" min="0" class="w-16 p-2 border rounded-lg" value="8">
-                        <span>〜</span>
-                        <input type="number" id="add-max2" min="0" class="w-16 p-2 border rounded-lg" value="16">
+                        <input type="number" id="add-min2" min="0" class="w-14 p-2 border rounded-lg" value="8"><span>〜</span><input type="number" id="add-max2" min="0" class="w-14 p-2 border rounded-lg" value="16">
                     </div>
                     <div class="flex items-center gap-2">
-                        <label for="add-count" class="font-semibold whitespace-nowrap">問題数:</label>
-                        <input type="number" id="add-count" min="0" class="w-20 p-2 border rounded-lg" value="3">
+                        <label for="add-count" class="font-semibold whitespace-nowrap">問題数:</label><input type="number" id="add-count" min="0" class="w-16 p-2 border rounded-lg" value="3">
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="font-semibold whitespace-nowrap">順番:</span>
-                        <label><input type="radio" name="add-order" value="asc" checked> 小さい順</label>
-                        <label><input type="radio" name="add-order" value="random"> ランダム</label>
+                        <label><input type="radio" name="add-order" value="asc" checked> 小さい順</label><label><input type="radio" name="add-order" value="random"> ランダム</label>
                     </div>
                 </div>
-            </div>
 
-            <!-- 引き算 -->
-            <div class="bg-green-50 p-3 rounded-xl mb-4 border border-green-200">
-                <h3 class="text-lg font-bold text-green-800 mb-3">引き算</h3>
-                <div class="flex flex-col md:flex-row md:items-center md:gap-4 space-y-3 md:space-y-0">
+                <!-- 引き算 -->
+                <div class="bg-green-50 p-3 rounded-xl border border-green-200 flex flex-col lg:flex-row lg:items-center lg:gap-4 space-y-3 lg:space-y-0">
+                    <h3 class="text-lg font-bold text-green-800 whitespace-nowrap min-w-[70px]">引き算</h3>
                     <div class="flex flex-wrap items-center gap-2 flex-grow">
-                        <input type="number" id="sub-min1" min="0" class="w-16 p-2 border rounded-lg" value="12">
-                        <span>〜</span>
-                        <input type="number" id="sub-max1" min="0" class="w-16 p-2 border rounded-lg" value="21">
+                        <input type="number" id="sub-min1" min="0" class="w-14 p-2 border rounded-lg" value="12"><span>〜</span><input type="number" id="sub-max1" min="0" class="w-14 p-2 border rounded-lg" value="21">
                         <span class="text-2xl font-bold mx-2">−</span>
-                        <input type="number" id="sub-min2" min="0" class="w-16 p-2 border rounded-lg" value="5">
-                        <span>〜</span>
-                        <input type="number" id="sub-max2" min="0" class="w-16 p-2 border rounded-lg" value="7">
+                        <input type="number" id="sub-min2" min="0" class="w-14 p-2 border rounded-lg" value="5"><span>〜</span><input type="number" id="sub-max2" min="0" class="w-14 p-2 border rounded-lg" value="7">
                     </div>
                     <div class="flex items-center gap-2">
-                        <label for="sub-count" class="font-semibold whitespace-nowrap">問題数:</label>
-                        <input type="number" id="sub-count" min="0" class="w-20 p-2 border rounded-lg" value="4">
+                        <label for="sub-count" class="font-semibold whitespace-nowrap">問題数:</label><input type="number" id="sub-count" min="0" class="w-16 p-2 border rounded-lg" value="4">
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="font-semibold whitespace-nowrap">順番:</span>
-                        <label><input type="radio" name="sub-order" value="asc" checked> 小さい順</label>
-                        <label><input type="radio" name="sub-order" value="random"> ランダム</label>
+                        <label><input type="radio" name="sub-order" value="asc" checked> 小さい順</label><label><input type="radio" name="sub-order" value="random"> ランダム</label>
                     </div>
                 </div>
-            </div>
 
-            <!-- かけ算 -->
-            <div class="bg-yellow-50 p-3 rounded-xl mb-4 border border-yellow-200">
-                 <h3 class="text-lg font-bold text-yellow-800 mb-3">かけ算</h3>
-                 <div class="flex flex-col md:flex-row md:items-center md:gap-4 space-y-3 md:space-y-0">
+                <!-- かけ算 -->
+                <div class="bg-yellow-50 p-3 rounded-xl border border-yellow-200 flex flex-col lg:flex-row lg:items-center lg:gap-4 space-y-3 lg:space-y-0">
+                    <h3 class="text-lg font-bold text-yellow-800 whitespace-nowrap min-w-[70px]">かけ算</h3>
                     <div class="flex flex-wrap items-center gap-2 flex-grow">
-                        <input type="number" id="mul-min1" min="0" class="w-16 p-2 border rounded-lg" value="5">
-                        <span>〜</span>
-                        <input type="number" id="mul-max1" min="0" class="w-16 p-2 border rounded-lg" value="7">
+                        <input type="number" id="mul-min1" min="0" class="w-14 p-2 border rounded-lg" value="5"><span>〜</span><input type="number" id="mul-max1" min="0" class="w-14 p-2 border rounded-lg" value="7">
                         <span class="text-2xl font-bold mx-2">×</span>
-                        <input type="number" id="mul-min2" min="0" class="w-16 p-2 border rounded-lg" value="7">
-                        <span>〜</span>
-                        <input type="number" id="mul-max2" min="0" class="w-16 p-2 border rounded-lg" value="9">
+                        <input type="number" id="mul-min2" min="0" class="w-14 p-2 border rounded-lg" value="7"><span>〜</span><input type="number" id="mul-max2" min="0" class="w-14 p-2 border rounded-lg" value="9">
                     </div>
                     <div class="flex items-center gap-2">
-                        <label for="mul-count" class="font-semibold whitespace-nowrap">問題数:</label>
-                        <input type="number" id="mul-count" min="0" class="w-20 p-2 border rounded-lg" value="3">
+                        <label for="mul-count" class="font-semibold whitespace-nowrap">問題数:</label><input type="number" id="mul-count" min="0" class="w-16 p-2 border rounded-lg" value="3">
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="font-semibold whitespace-nowrap">順番:</span>
-                        <label><input type="radio" name="mul-order" value="asc" checked> 小さい順</label>
-                        <label><input type="radio" name="mul-order" value="random"> ランダム</label>
+                        <label><input type="radio" name="mul-order" value="asc" checked> 小さい順</label><label><input type="radio" name="mul-order" value="random"> ランダム</label>
                     </div>
                 </div>
             </div>
 
-            <div class="p-4 rounded-xl mb-4 border border-gray-200">
-                <h3 class="text-lg font-bold mb-3">問題の表示順</h3>
-                <div class="flex flex-col md:flex-row gap-4">
-                    <label class="flex-1"><input type="radio" name="overall-order" value="as-created" checked> 作ったままの順</label>
-                    <label class="flex-1"><input type="radio" name="overall-order" value="random"> 全ジャンルでランダム</label>
+            <div class="mt-6 p-4 rounded-xl border border-gray-200 flex flex-col md:flex-row md:items-center gap-4 justify-between">
+                <h3 class="text-lg font-bold whitespace-nowrap">問題の表示順</h3>
+                <div class="flex items-center gap-x-8">
+                    <label><input type="radio" name="overall-order" value="as-created" checked> 作ったままの順</label>
+                    <label><input type="radio" name="overall-order" value="random"> 全ジャンルでランダム</label>
                 </div>
             </div>
 
-            <div class="p-4 rounded-xl mb-4 border border-gray-200">
-                <h3 class="text-lg font-bold mb-3">ヘッダー右上のテキスト</h3>
+            <div class="mt-4 p-4 rounded-xl border border-gray-200 flex flex-col md:flex-row md:items-center gap-4">
+                <h3 class="text-lg font-bold whitespace-nowrap">ヘッダー右上のテキスト</h3>
                 <input type="text" id="header-text" class="w-full p-2 border rounded-lg" placeholder="例：たしざんとかけ算7の段">
             </div>
+            
+            <div id="warning-message" class="text-center my-4 hidden"></div>
 
-            <div id="error-message" class="text-red-600 font-bold text-center my-3 hidden"></div>
-
-            <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-xl">
+            <button type="submit" class="w-full mt-6 bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-xl">
                 プリント作成
             </button>
         </form>
@@ -182,12 +159,16 @@
         const settingsForm = document.getElementById('settings-form');
         const settingsContainer = document.getElementById('settings-container');
         const printContainer = document.getElementById('print-container');
-        const errorMessage = document.getElementById('error-message');
+        const warningMessage = document.getElementById('warning-message');
         const backBtn = document.getElementById('back-btn');
         const answerToggleBtn = document.getElementById('answer-toggle-btn');
         const printBtn = document.getElementById('print-btn');
         const problemsDisplay = document.getElementById('problems-display');
         const headerTextDisplay = document.getElementById('header-text-display');
+        
+        const addCountInput = document.getElementById('add-count');
+        const subCountInput = document.getElementById('sub-count');
+        const mulCountInput = document.getElementById('mul-count');
 
         let problems = [];
         let showingAnswers = false;
@@ -259,7 +240,6 @@
                     attempts++;
                 }
 
-
                 if (getRadio('sub-order') === 'asc') {
                     subProblems.sort((a, b) => a.n1 - b.n1 || a.n2 - b.n2);
                 } else {
@@ -308,21 +288,17 @@
 
         const renderProblems = () => {
             problemsDisplay.innerHTML = '';
-            
-            // レイアウト調整
             problemsDisplay.style.alignContent = 'space-around';
             
             problems.forEach(p => {
                 const problemEl = document.createElement('div');
                 problemEl.classList.add('problem-item');
 
-                // padStartを削除し、純粋な左揃えを実現
                 const n1Str = String(p.n1);
                 const n2Str = String(p.n2);
 
                 if (showingAnswers) {
                     const ansStr = String(p.answer);
-                    // &nbsp; を使って演算子との間のスペースを確保
                     problemEl.innerHTML = `${n1Str}&nbsp;${p.type}&nbsp;${n2Str}&nbsp;=&nbsp;${ansStr}`;
                 } else {
                     problemEl.innerHTML = `${n1Str}&nbsp;${p.type}&nbsp;${n2Str}`;
@@ -332,24 +308,32 @@
             });
         };
 
+        const checkTotalCount = () => {
+            const total = getVal('add-count') + getVal('sub-count') + getVal('mul-count');
+            if (total > 20) {
+                warningMessage.textContent = '合計問題数が20問を超えています。A4からはみ出すかもしれません。';
+                warningMessage.className = 'p-2 rounded-lg bg-yellow-100 text-yellow-700 font-bold text-center my-4';
+            } else {
+                warningMessage.className = 'hidden';
+            }
+        };
+
+        addCountInput.addEventListener('input', checkTotalCount);
+        subCountInput.addEventListener('input', checkTotalCount);
+        mulCountInput.addEventListener('input', checkTotalCount);
+
         settingsForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             const totalCount = getVal('add-count') + getVal('sub-count') + getVal('mul-count');
-            if (totalCount > 16) {
-                errorMessage.textContent = 'エラー: 合計問題数が16問を超えています。問題数を16問以下にしてください。';
-                errorMessage.classList.remove('hidden');
-                return;
-            }
              if (totalCount === 0) {
-                errorMessage.textContent = 'エラー: 問題数を1問以上にしてください。';
-                errorMessage.classList.remove('hidden');
+                warningMessage.textContent = 'エラー: 問題数を1問以上にしてください。';
+                warningMessage.className = 'p-2 rounded-lg bg-red-100 text-red-700 font-bold text-center my-4';
                 return;
             }
-            errorMessage.classList.add('hidden');
+            checkTotalCount(); // 念のためサブミット時にもチェック
 
             problems = generateProblems();
-
             headerTextDisplay.textContent = document.getElementById('header-text').value;
 
             settingsContainer.classList.add('hidden');
