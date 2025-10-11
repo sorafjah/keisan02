@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>計算プリント作成アプリ2</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'M PLUS Rounded 1c', 'Inter', sans-serif;
+            font-family: 'Poppins', 'M PLUS Rounded 1c', sans-serif;
         }
 
         /* A4印刷用のスタイル */
@@ -93,7 +93,7 @@
                         <input type="number" id="sub-min1" min="0" class="w-16 p-2 border rounded-lg" value="12">
                         <span>〜</span>
                         <input type="number" id="sub-max1" min="0" class="w-16 p-2 border rounded-lg" value="21">
-                        <span class="text-2xl font-bold mx-2">-</span>
+                        <span class="text-2xl font-bold mx-2">−</span>
                         <input type="number" id="sub-min2" min="0" class="w-16 p-2 border rounded-lg" value="5">
                         <span>〜</span>
                         <input type="number" id="sub-max2" min="0" class="w-16 p-2 border rounded-lg" value="7">
@@ -252,7 +252,7 @@
                     let n2 = randInt(min2, max2);
                     if (n1 < n2) [n1, n2] = [n2, n1]; // 答えが負にならないように
                     
-                    const newProblem = { n1, n2, type: '-', answer: n1 - n2 };
+                    const newProblem = { n1, n2, type: '−', answer: n1 - n2 };
                     if (!subProblems.some(p => p.n1 === n1 && p.n2 === n2)) {
                          subProblems.push(newProblem);
                     }
@@ -316,17 +316,17 @@
                 const problemEl = document.createElement('div');
                 problemEl.classList.add('problem-item');
 
-                const n1Str = String(p.n1).padStart(2, ' ');
-                const n2Str = String(p.n2).padStart(2, ' ');
+                // padStartを削除し、純粋な左揃えを実現
+                const n1Str = String(p.n1);
+                const n2Str = String(p.n2);
 
                 if (showingAnswers) {
-                    const ansStr = String(p.answer).padStart(3, ' ');
-                    problemEl.innerHTML = `${n1Str} ${p.type} ${n2Str} = ${ansStr}`;
+                    const ansStr = String(p.answer);
+                    // &nbsp; を使って演算子との間のスペースを確保
+                    problemEl.innerHTML = `${n1Str}&nbsp;${p.type}&nbsp;${n2Str}&nbsp;=&nbsp;${ansStr}`;
                 } else {
-                    problemEl.innerHTML = `${n1Str} ${p.type} ${n2Str}`;
+                    problemEl.innerHTML = `${n1Str}&nbsp;${p.type}&nbsp;${n2Str}`;
                 }
-                 // テキストの代わりにinnerHTMLを使い、スペースを&nbsp;に置換して表示を維持
-                problemEl.innerHTML = problemEl.innerHTML.replace(/ /g, '&nbsp;');
 
                 problemsDisplay.appendChild(problemEl);
             });
